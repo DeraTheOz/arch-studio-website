@@ -14,10 +14,10 @@ export default function PageIndicator({ pathname }: PageIndicatorProps) {
 
   return (
     <div
-      className="pointer-events-none absolute top-0 left-9.75 hidden h-68 w-6 text-arch-light-grey sm:block xl:left-[max(1.5rem,calc((100vw-min(100vw-2rem,69.375rem))/2-6.375rem))]"
+      className="hidden sm:flex flex-col items-center justify-between w-6 gap-8 text-arch-light-grey pointer-events-none mt-auto"
       aria-hidden="true">
-      <span className="absolute top-0 left-2.5 h-26 w-px bg-arch-light-grey" />
-      <span className="absolute top-38 left-0 text-lg leading-6 font-medium tracking-[1.125rem] uppercase [writing-mode:vertical-rl]">
+      <span className="h-24 w-px bg-arch-light-grey" />
+      <span className="text-lg leading-6 font-medium tracking-[1.125rem] uppercase [writing-mode:vertical-rl]">
         {getPageIndicator()}
       </span>
     </div>

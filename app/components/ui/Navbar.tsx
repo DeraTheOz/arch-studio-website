@@ -22,12 +22,14 @@ export default function Navbar() {
   }
 
   return (
-    <header className="relative z-20 bg-arch-white" data-menu-open={isOpen}>
+    <header
+      className="relative z-20 flex items-center h-24 sm:h-32"
+      data-menu-open={isOpen}>
       <PageIndicator pathname={pathname} />
 
       <div
-        className="mx-8 flex h-24 items-center justify-between gap-6 sm:mx-auto sm:h-38 sm:w-[calc(100%-12.125rem)] sm:items-start sm:justify-start sm:gap-16 sm:pt-14 xl:w-[min(calc(100%-2rem),69.375rem)]"
-        ref={navbarRef}>
+        ref={navbarRef}
+        className="mx-8 w-full flex items-center justify-between gap-6 sm:items-start sm:justify-start sm:w-[calc(100%-10rem)] sm:mx-auto sm:ml-12 sm:gap-16">
         <Logo />
 
         <MenuButton isOpen={isOpen} setIsOpen={setIsOpen} />
