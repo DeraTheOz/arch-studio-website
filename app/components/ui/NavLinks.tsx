@@ -44,10 +44,10 @@ export default function NavLinks({
   return (
     <nav
       id="primary-navigation"
-      className={`absolute top-24 right-0 max-w-85.75 w-[calc(100%-2rem)] h-58.75 flex justify-start bg-arch-very-light-grey shadow-nav transition-all sm:transition-colors sm:bg-transparent sm:shadow-none sm:static ${
+      className={`absolute top-24 right-0 max-w-85.75 w-[calc(100%-2rem)] h-58.75 flex justify-start bg-arch-very-light-grey shadow-nav transition-all sm:transition-colors sm:bg-transparent sm:shadow-none sm:relative ${
         isOpen
           ? "visible translate-y-0 opacity-100"
-          : "invisible -translate-y-3 opacity-0 pointer-events-none sm:visible sm:translate-y-0 sm:opacity-100 sm:pointer-events-auto"
+          : "invisible translate-y-10 opacity-0 pointer-events-none sm:h-auto sm:top-0 sm:visible sm:translate-y-0 sm:opacity-100 sm:pointer-events-auto"
       }`}
       aria-label="Primary navigation">
       <ul className="flex items-start justify-center flex-col w-61.75 h-38.5 mx-12 my-auto gap-4.25 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:w-78.25 sm:h-6.25 sm:m-0 sm:mt-2.5">
@@ -58,7 +58,7 @@ export default function NavLinks({
             <li key={link.href}>
               <Link
                 href={link.href}
-                className={`text-arch-black text-[2rem] leading-10 font-bold transition-colors hover:text-arch-medium-grey   sm:text-lg sm:hover:text-arch-black sm:leading-6 ${isActiveLink ? " text-arch-medium-grey sm:text-arch-black" : "sm:text-arch-medium-grey"}`}
+                className={`relative after:absolute after:right-1/5 after:-bottom-2 after:h-px after:w-6 after:bg-arch-black after:content-[''] after:hidden text-arch-black text-[2rem] leading-10 font-bold transition-colors hover:text-arch-medium-grey sm:text-lg sm:hover:text-arch-black sm:leading-6 ${isActiveLink ? "after:inline-block text-arch-medium-grey sm:text-arch-black" : "sm:text-arch-medium-grey"}`}
                 aria-current={isActiveLink ? "page" : undefined}
                 onClick={() => setIsOpen(false)}>
                 {link.label}

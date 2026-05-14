@@ -13,7 +13,7 @@ export default function MenuButton({ isOpen, setIsOpen }: MenuProps) {
   return (
     <button
       type="button"
-      className="grid size-12 cursor-pointer place-items-center border-0 bg-transparent sm:hidden transition-all"
+      className="grid cursor-pointer place-items-center border-0 bg-transparent sm:hidden transition-all"
       aria-controls="primary-navigation"
       aria-expanded={isOpen}
       aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
