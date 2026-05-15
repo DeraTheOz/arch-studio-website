@@ -4,6 +4,7 @@ import { League_Spartan } from "next/font/google";
 import "./globals.css";
 
 import Navbar from "./components/ui/Navbar";
+import Footer from "./components/ui/Footer";
 
 const leagueSpartan = League_Spartan({
   subsets: ["latin"],
@@ -28,14 +29,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`h-full antialiased ${leagueSpartan.className}`}>
-      <body className="min-h-full flex flex-col bg-arch-white">
-        <div>
-          <div className="max-w-277.5 mx-auto">
+      <body className="min-h-full flex flex-col bg-arch-white text-lg leading-6">
+        <div className="min-h-full">
+          <div className="mx-auto w-full max-w-277.5">
             <Navbar />
 
-            <main className="flex flex-col justify-center max-w-240 mx-8 sm:mx-18 border border-blue-500">
-              {children}
-            </main>
+            <main className="w-full sm:px-24 lg:px-0">{children}</main>
+
+            <Footer />
           </div>
         </div>
       </body>

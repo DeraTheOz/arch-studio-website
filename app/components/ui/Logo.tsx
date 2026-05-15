@@ -1,11 +1,15 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 
 import LogoImage from "@/public/assets/logo.svg";
 
-export default function Logo() {
+interface LogoProps {
+  variant?: "black" | "white";
+}
+
+export default function Logo({ variant = "black" }: LogoProps) {
+  const filter = variant === "white" ? "invert brightness-0" : "";
+
   return (
     <Link
       href="/"
@@ -14,7 +18,7 @@ export default function Logo() {
       <Image
         src={LogoImage}
         alt="Arch Studio Logo"
-        className="h-auto w-full"
+        className={`h-auto w-full ${filter}`}
         priority
       />
     </Link>
