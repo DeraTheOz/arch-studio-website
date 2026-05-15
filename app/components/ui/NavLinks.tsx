@@ -44,13 +44,13 @@ export default function NavLinks({
   return (
     <nav
       id="primary-navigation"
-      className={`absolute top-24 right-0 max-w-85.75 w-[calc(100%-2rem)] h-58.75 flex justify-start bg-arch-very-light-grey shadow-nav transition-all sm:transition-colors sm:bg-transparent sm:shadow-none sm:relative ${
+      className={`absolute top-24 right-0 flex h-58.75 w-[calc(100%-2rem)] max-w-85.75 justify-start bg-arch-very-light-grey shadow-nav transition-all sm:relative sm:top-0 sm:h-auto sm:w-auto sm:max-w-none sm:bg-transparent sm:shadow-none sm:transition-colors ${
         isOpen
           ? "visible translate-y-0 opacity-100"
-          : "invisible translate-y-10 opacity-0 pointer-events-none sm:h-auto sm:top-0 sm:visible sm:translate-y-0 sm:opacity-100 sm:pointer-events-auto"
+          : "invisible translate-y-10 opacity-0 pointer-events-none sm:visible sm:translate-y-0 sm:opacity-100 sm:pointer-events-auto"
       }`}
       aria-label="Primary navigation">
-      <ul className="flex items-start justify-center flex-col w-61.75 h-38.5 mx-12 my-auto gap-4.25 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:w-78.25 sm:h-6.25 sm:m-0 sm:mt-2.5">
+      <ul className="my-auto ml-12 flex flex-col items-start justify-center gap-4.25 sm:m-0 sm:flex-row sm:items-center sm:gap-14">
         {navigationItems.map((link) => {
           const isActiveLink = isActive(link.href);
 
@@ -58,7 +58,7 @@ export default function NavLinks({
             <li key={link.href}>
               <Link
                 href={link.href}
-                className={`relative after:absolute after:right-1/5 after:-bottom-2 after:h-px after:w-6 after:bg-arch-black after:content-[''] after:hidden text-arch-black text-[2rem] leading-10 font-bold transition-colors hover:text-arch-medium-grey sm:text-lg sm:hover:text-arch-black sm:leading-6 ${isActiveLink ? "after:inline-block text-arch-medium-grey sm:text-arch-black" : "sm:text-arch-medium-grey"}`}
+                className={`relative text-[2rem] font-bold leading-10 text-arch-black transition-colors after:absolute after:right-1/5 after:-bottom-2 after:hidden after:h-px after:w-6 after:bg-arch-black after:content-[''] hover:text-arch-medium-grey focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-arch-black sm:text-lg sm:leading-6 sm:hover:text-arch-black ${isActiveLink ? "text-arch-medium-grey after:inline-block sm:text-arch-black pointer-events-none" : "sm:text-arch-medium-grey"}`}
                 aria-current={isActiveLink ? "page" : undefined}
                 onClick={() => setIsOpen(false)}>
                 {link.label}
