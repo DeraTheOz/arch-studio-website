@@ -23,13 +23,13 @@ export default function Navbar() {
 
   return (
     <header
-      className="relative z-20 flex items-center h-24 sm:h-32"
+      className="relative z-30 flex h-24 items-center sm:h-32"
       data-menu-open={isOpen}>
       <PageIndicator pathname={pathname} />
 
       <div
         ref={navbarRef}
-        className="mx-8 w-full flex items-center justify-between gap-6 sm:items-start sm:justify-start sm:w-[calc(100%-10rem)] sm:mx-auto sm:ml-12 sm:gap-16">
+        className="mx-8 flex w-full items-center justify-between gap-6 sm:mx-24 sm:justify-start sm:gap-20 lg:mx-0 lg:gap-23.5">
         <Logo />
 
         <MenuButton isOpen={isOpen} setIsOpen={setIsOpen} />
@@ -43,4 +43,27 @@ export default function Navbar() {
       </div>
     </header>
   );
+
+  // return (
+  //   <header
+  //     className="relative z-20 flex items-center h-24 sm:h-32"
+  //     data-menu-open={isOpen}>
+  //     <PageIndicator pathname={pathname} />
+
+  //     <div
+  //       ref={navbarRef}
+  //       className="mx-8 w-full flex items-center justify-between gap-6 sm:items-start sm:justify-start sm:w-[calc(100%-10rem)] sm:mx-auto sm:ml-12 sm:gap-16">
+  //       <Logo />
+
+  //       <MenuButton isOpen={isOpen} setIsOpen={setIsOpen} />
+
+  //       <NavLinks
+  //         navbarRef={navbarRef}
+  //         isOpen={isOpen}
+  //         isActive={isActive}
+  //         setIsOpen={setIsOpen}
+  //       />
+  //     </div>
+  //   </header>
+  // );
 }
