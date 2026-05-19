@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect } from "react";
 
 interface NavLinkProps {
-  navbarRef: React.RefObject<HTMLDivElement | null>;
+  headerRef: React.RefObject<HTMLDivElement | null>;
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   isActive: (item: string) => boolean;
@@ -17,7 +17,7 @@ const navigationItems = [
 ] as const;
 
 export default function NavLinks({
-  navbarRef,
+  headerRef,
   isOpen,
   isActive,
   setIsOpen,
@@ -27,30 +27,38 @@ export default function NavLinks({
 
     function handleOutsideClick(event: PointerEvent) {
       if (
-        navbarRef.current &&
-        !navbarRef.current.contains(event.target as Node)
+        headerRef.current &&
+        !headerRef.current.contains(event.target as Node)
       ) {
         setIsOpen(false);
       }
     }
 
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        setIsOpen(false);
+      }
+    }
+
     document.addEventListener("pointerdown", handleOutsideClick);
+    document.addEventListener("keydown", handleKeyDown);
 
     return () => {
       document.removeEventListener("pointerdown", handleOutsideClick);
+      document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [navbarRef, isOpen, setIsOpen]);
+  }, [headerRef, isOpen, setIsOpen]);
 
   return (
     <nav
       id="primary-navigation"
-      className={`absolute top-24 right-0 flex h-58.75 w-[calc(100%-2rem)] max-w-85.75 justify-start bg-arch-very-light-grey shadow-nav transition-all sm:relative sm:top-0 sm:h-auto sm:w-auto sm:max-w-none sm:bg-transparent sm:shadow-none sm:transition-colors ${
+      className={`absolute top-24 right-0 w-[calc(100%-2rem)] max-w-85.75 bg-arch-very-light-grey py-10 pl-12 shadow-nav transition-all md:static md:block md:w-auto md:max-w-none md:bg-transparent md:p-0 md:shadow-none md:transition-colors ${
         isOpen
           ? "visible translate-y-0 opacity-100"
-          : "invisible translate-y-10 opacity-0 pointer-events-none sm:visible sm:translate-y-0 sm:opacity-100 sm:pointer-events-auto"
+          : "invisible translate-y-10 opacity-0 pointer-events-none md:visible md:translate-y-0 md:opacity-100 md:pointer-events-auto"
       }`}
       aria-label="Primary navigation">
-      <ul className="my-auto ml-12 flex flex-col items-start justify-center gap-4.25 sm:m-0 sm:flex-row sm:items-center sm:gap-14">
+      <ul className="flex flex-col gap-4.25 md:flex-row md:gap-14">
         {navigationItems.map((link) => {
           const isActiveLink = isActive(link.href);
 
@@ -58,7 +66,7 @@ export default function NavLinks({
             <li key={link.href}>
               <Link
                 href={link.href}
-                className={`relative text-[2rem] font-bold leading-10 text-arch-black transition-colors after:absolute after:right-1/5 after:-bottom-2 after:hidden after:h-px after:w-6 after:bg-arch-black after:content-[''] hover:text-arch-medium-grey focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-arch-black sm:text-lg sm:leading-6 sm:hover:text-arch-black ${isActiveLink ? "text-arch-medium-grey after:inline-block sm:text-arch-black pointer-events-none" : "sm:text-arch-medium-grey"}`}
+                className={`relative text-[2rem] font-bold leading-10 text-arch-black transition-colors after:absolute after:right-1/5 after:-bottom-2 after:hidden after:h-px after:w-6 after:bg-arch-black after:content-[''] hover:text-arch-medium-grey focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-arch-black md:whitespace-nowrap md:text-lg md:leading-6 md:hover:text-arch-black ${isActiveLink ? "text-arch-medium-grey after:inline-block md:text-arch-black pointer-events-none" : "md:text-arch-medium-grey"}`}
                 aria-current={isActiveLink ? "page" : undefined}
                 onClick={() => setIsOpen(false)}>
                 {link.label}

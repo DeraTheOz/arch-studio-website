@@ -7,30 +7,17 @@ interface PageIndicatorProps {
 export default function PageIndicator({ pathname }: PageIndicatorProps) {
   function getPageIndicator(): string {
     if (pathname.startsWith("/portfolio")) return "PORTFOLIO";
-    if (pathname.startsWith("/about")) return "ABOUT";
+    if (pathname.startsWith("/about")) return "ABOUT US";
     if (pathname.startsWith("/contact")) return "CONTACT";
     return "HOME";
   }
 
   return (
-    <div
-      className="pointer-events-none absolute top-0 left-10 hidden w-6 flex-col items-center gap-8 text-arch-light-grey lg:-left-24 sm:flex"
-      aria-hidden="true">
+    <div className="page-kicker" aria-hidden="true">
       <span className="h-24 w-px bg-arch-light-grey" />
       <span className="text-lg font-medium leading-6 tracking-[1.125rem] uppercase [writing-mode:vertical-rl]">
         {getPageIndicator()}
       </span>
     </div>
   );
-
-  // return (
-  //   <div
-  //     className="hidden sm:flex flex-col items-center justify-between w-6 gap-8 text-arch-light-grey pointer-events-none mt-auto"
-  //     aria-hidden="true">
-  //     <span className="h-24 w-px bg-arch-light-grey" />
-  //     <span className="text-lg leading-6 font-medium tracking-[1.125rem] uppercase [writing-mode:vertical-rl]">
-  //       {getPageIndicator()}
-  //     </span>
-  //   </div>
-  // );
 }
