@@ -3,7 +3,7 @@ import { League_Spartan } from "next/font/google";
 
 import "./globals.css";
 
-import Navbar from "./components/ui/Navbar";
+import Header from "./components/ui/Header";
 import Footer from "./components/ui/Footer";
 
 const leagueSpartan = League_Spartan({
@@ -28,16 +28,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`h-full antialiased ${leagueSpartan.className}`}>
-      <body className="min-h-full flex flex-col bg-arch-white text-lg leading-6">
-        <div className="min-h-full">
-          <div className="mx-auto w-full max-w-277.5">
-            <Navbar />
+    <html lang="en" className={leagueSpartan.className}>
+      <body className="min-h-dvh antialiased">
+        <div className="flex min-h-dvh flex-col">
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-arch-black focus:px-4 focus:py-3 focus:font-bold focus:text-arch-white">
+            Skip to content
+          </a>
 
-            <main className="w-full sm:px-24 lg:px-0">{children}</main>
+          <Header />
 
-            <Footer />
-          </div>
+          <main id="main-content" className="flex-1">
+            {children}
+          </main>
+
+          <Footer />
         </div>
       </body>
     </html>

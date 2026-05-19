@@ -13,8 +13,8 @@ export default function FooterNavLinks() {
   const pathname = usePathname();
 
   return (
-    <nav className="mt-auto sm:mt-0" aria-label="Footer navigation">
-      <ul className="flex flex-col items-center justify-center gap-8 font-bold leading-6.25 text-arch-medium-grey sm:flex-row sm:gap-12 lg:gap-15">
+    <nav className="mt-auto md:mt-0" aria-label="Footer navigation">
+      <ul className="flex flex-col items-center justify-center gap-8 font-bold leading-6.25 text-arch-medium-grey md:flex-row md:gap-12 xl:gap-15">
         {navLinks.map((link) => {
           const isActive =
             link.href === "/portfolio"

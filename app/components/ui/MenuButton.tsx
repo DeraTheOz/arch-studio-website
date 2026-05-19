@@ -13,7 +13,7 @@ export default function MenuButton({ isOpen, setIsOpen }: MenuProps) {
   return (
     <button
       type="button"
-      className="grid cursor-pointer place-items-center border-0 bg-transparent transition-all focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-arch-black sm:hidden"
+      className="grid size-8 place-items-center transition-all focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-arch-black md:hidden"
       aria-controls="primary-navigation"
       aria-expanded={isOpen}
       aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
@@ -25,20 +25,4 @@ export default function MenuButton({ isOpen, setIsOpen }: MenuProps) {
       />
     </button>
   );
-
-  // return (
-  //   <button
-  //     type="button"
-  //     className="grid cursor-pointer place-items-center border-0 bg-transparent sm:hidden transition-all"
-  //     aria-controls="primary-navigation"
-  //     aria-expanded={isOpen}
-  //     aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
-  //     onClick={() => setIsOpen((current) => !current)}>
-  //     <Image
-  //       src={isOpen ? CloseIcon : HamburgerIcon}
-  //       alt="Menu action button"
-  //       aria-hidden="true"
-  //     />
-  //   </button>
-  // );
 }
