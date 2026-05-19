@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 
+import Featured from "../components/home/Featured";
+
 export const metadata: Metadata = {
   title: "Home | Arch Studio",
   description:
@@ -12,5 +14,5 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
-  return <section>Home page</section>;
+  return <Featured />;
 }
