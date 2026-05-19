@@ -4,16 +4,16 @@ import Link from "next/link";
 import LogoImage from "@/public/assets/logo.svg";
 
 interface LogoProps {
-  variant?: "black" | "white";
+  variant?: "dark" | "light";
 }
 
-export default function Logo({ variant = "black" }: LogoProps) {
-  const filter = variant === "white" ? "invert brightness-0" : "";
+export default function Logo({ variant = "dark" }: LogoProps) {
+  const filter = variant === "light" ? "invert brightness-0" : "";
 
   return (
     <Link
       href="/"
-      className="inline-flex h-8 w-19.25 shrink-0 items-center sm:h-10 sm:w-24.5"
+      className="inline-flex h-8 w-19.25 shrink-0 items-center md:h-10 md:w-24.5"
       aria-label="Arch Studio home">
       <Image
         src={LogoImage}
