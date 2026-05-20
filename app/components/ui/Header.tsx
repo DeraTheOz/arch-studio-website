@@ -41,6 +41,15 @@ export default function Header() {
           setIsOpen={setIsOpen}
         />
       </div>
+
+      {/* Overlay for mobile nav backdrop */}
+      {isOpen && (
+        <div
+          className="fixed inset-0 top-24 z-20 bg-black/50 transition-all visible translate-y-0 opacity-100 md:opacity-0 md:invisible md:pointer-events-none"
+          onClick={() => setIsOpen(false)}
+          aria-hidden="true"
+        />
+      )}
     </header>
   );
 }
