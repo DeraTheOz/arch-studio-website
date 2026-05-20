@@ -1,5 +1,5 @@
-import { getImageProps, type StaticImageData } from "next/image";
-import { ResponsiveImageSet } from "../home/Featured";
+import Image from "next/image";
+import { ResponsiveImageSet } from "@/types/types";
 
 type ResponsiveImageProps = {
   image: ResponsiveImageSet;
@@ -12,66 +12,31 @@ type ResponsiveImageProps = {
   };
 };
 
-function getOptimizedImage(
-  src: StaticImageData,
-  alt: string,
-  sizes: string,
-  priority: boolean,
-) {
-  const {
-    props: { srcSet, ...rest },
-  } = getImageProps({
-    src,
-    alt,
-    sizes,
-    priority,
-  });
-
-  return { srcSet, rest };
-}
-
 export default function ResponsiveImage({
   image,
   className,
   priority = false,
   sizes,
 }: ResponsiveImageProps) {
-  const mobile = getOptimizedImage(
-    image.mobile,
-    image.alt,
-    sizes.mobile,
-    priority,
-  );
-  const tablet = getOptimizedImage(
-    image.tablet,
-    image.alt,
-    sizes.tablet,
-    priority,
-  );
-  const desktop = getOptimizedImage(
-    image.desktop,
-    image.alt,
-    sizes.desktop,
-    priority,
-  );
-
   return (
     <picture>
       <source
         media="(min-width: 75rem)"
-        srcSet={desktop.srcSet}
+        srcSet={image.desktop.src}
         sizes={sizes.desktop}
       />
       <source
         media="(min-width: 48rem)"
-        srcSet={tablet.srcSet}
+        srcSet={image.tablet.src}
         sizes={sizes.tablet}
       />
-      <img
-        {...mobile.rest}
+      <Image
+        src={image.mobile}
         alt={image.alt}
         className={className}
-        decoding="async"
+        priority={priority}
+        placeholder="blur"
+        sizes={`(min-width: 75rem) ${sizes.desktop}, (min-width: 48rem) ${sizes.tablet}, ${sizes.mobile}`}
       />
     </picture>
   );

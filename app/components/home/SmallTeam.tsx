@@ -1,9 +1,9 @@
-import ResponsiveImage from "../ui/ResponsiveImage";
-import WelcomeButton from "./WelcomeButton";
-
 import smallTeamMobile from "@/public/assets/home/mobile/image-small-team.jpg";
 import smallTeamTablet from "@/public/assets/home/tablet/image-small-team.jpg";
 import smallTeamDesktop from "@/public/assets/home/desktop/image-small-team.jpg";
+
+import ResponsiveImage from "../ui/ResponsiveImage";
+import Button from "../ui/Button";
 
 const smallTeam = {
   mobile: smallTeamMobile,
@@ -33,7 +33,12 @@ export default function SmallTeam() {
               Small team, <br /> big ideas
             </h2>
 
-            <WelcomeButton />
+            <Button
+              href="/about"
+              variant="about"
+              ariaLabel="Learn more about our team">
+              About Us
+            </Button>
           </div>
         </div>
       </div>

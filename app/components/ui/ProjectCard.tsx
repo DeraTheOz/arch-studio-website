@@ -1,6 +1,6 @@
 import Link from "next/link";
 import ResponsiveImage from "./ResponsiveImage";
-import { Project } from "../home/Featured";
+import { Project } from "@/types/types";
 
 type ProjectCardProps = {
   project: Project;

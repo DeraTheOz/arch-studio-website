@@ -1,7 +1,3 @@
-import { StaticImageData } from "next/image";
-
-import FeaturedButton from "./FeaturedButton";
-
 import project228Mobile from "@/public/assets/portfolio/mobile/image-228b.jpg";
 import project228Tablet from "@/public/assets/portfolio/tablet/image-228b.jpg";
 import project228Desktop from "@/public/assets/portfolio/desktop/image-228b.jpg";
@@ -15,20 +11,8 @@ import projectPrototypeTablet from "@/public/assets/portfolio/tablet/image-proto
 import projectPrototypeDesktop from "@/public/assets/portfolio/desktop/image-prototype.jpg";
 
 import ProjectCard from "../ui/ProjectCard";
-
-export type ResponsiveImageSet = {
-  mobile: StaticImageData;
-  tablet: StaticImageData;
-  desktop: StaticImageData;
-  alt: string;
-};
-
-export type Project = {
-  slug: string;
-  title: string;
-  date: string;
-  images: ResponsiveImageSet;
-};
+import { Project } from "@/types/types";
+import Button from "../ui/Button";
 
 export const projects: Project[] = [
   {
@@ -84,7 +68,12 @@ export default function Featured() {
 
         {/* DESKTOP BUTTON */}
         <div className="order-2 hidden sm:block">
-          <FeaturedButton />
+          <Button
+            href="/portfolio"
+            variant="featured"
+            ariaLabel="View all featured projects">
+            See All
+          </Button>
         </div>
       </div>
 
@@ -101,7 +90,12 @@ export default function Featured() {
 
       {/* MOBILE BUTTON */}
       <div className="mt-6 order-4 sm:hidden">
-        <FeaturedButton />
+        <Button
+          href="/portfolio"
+          variant="featured"
+          ariaLabel="View all featured projects">
+          See All
+        </Button>
       </div>
     </section>
   );
