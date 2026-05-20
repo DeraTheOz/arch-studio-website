@@ -1,6 +1,6 @@
 import Logo from "./Logo";
-import FooterButton from "./FooterButton";
 import FooterNavLinks from "./FooterNavLinks";
+import Button from "./Button";
 
 export default function Footer() {
   return (
@@ -13,7 +13,12 @@ export default function Footer() {
 
           <FooterNavLinks />
 
-          <FooterButton />
+          <Button
+            href="/portfolio"
+            variant="footer"
+            ariaLabel="Browse our complete portfolio">
+            See Our Portfolio
+          </Button>
         </div>
       </div>
     </footer>

@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 
-import Featured from "../components/home/Featured";
+import Slider from "../components/home/Slider";
 import Welcome from "../components/home/Welcome";
 import SmallTeam from "../components/home/SmallTeam";
+import Featured from "../components/home/Featured";
 
 export const metadata: Metadata = {
   title: "Home | Arch Studio",
@@ -18,6 +19,7 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
+      <Slider />
       <Welcome />
       <SmallTeam />
       <Featured />

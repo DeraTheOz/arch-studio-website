@@ -52,7 +52,7 @@ export default function NavLinks({
   return (
     <nav
       id="primary-navigation"
-      className={`absolute top-24 right-0 z-25 w-[calc(100%-2rem)] max-w-85.75 bg-arch-very-light-grey py-10 pl-12 shadow-nav transition-all md:static md:block md:w-auto md:max-w-none md:bg-transparent md:p-0 md:shadow-none md:transition-colors ${
+      className={`absolute top-24 right-0 z-25 w-[calc(100%-2rem)] max-w-85.75 bg-arch-very-light-grey py-10 pl-12 ml-3.75 shadow-nav transition-all md:static md:block md:w-auto md:max-w-none md:bg-transparent md:p-0 md:shadow-none md:transition-colors ${
         isOpen
           ? "visible translate-y-0 opacity-100"
           : "invisible translate-y-10 opacity-0 pointer-events-none md:visible md:translate-y-0 md:opacity-100 md:pointer-events-auto"
