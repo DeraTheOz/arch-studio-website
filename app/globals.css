@@ -119,23 +119,6 @@
     content: "";
   }
 
-  .display-title {
-    color: var(--color-arch-very-light-grey);
-    font-size: 7.5rem;
-    font-weight: 700;
-    letter-spacing: -0.1875rem;
-    line-height: 12.5rem;
-    line-height: 0.83;
-  }
-
-  @media (min-width: 75rem) {
-    .display-title {
-      font-size: 15.625rem;
-      letter-spacing: -0.3125rem;
-      line-height: 0.8;
-    }
-  }
-
   .heading-xl {
     color: var(--color-arch-black);
     font-size: 3rem;

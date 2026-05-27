@@ -1,10 +1,13 @@
 import { StaticImageData } from "next/image";
 
+export type ResponsiveImageSource = StaticImageData | string;
+
 export type ResponsiveImageSet = {
-  mobile: StaticImageData;
-  tablet: StaticImageData;
-  desktop: StaticImageData;
+  mobile: ResponsiveImageSource;
+  tablet: ResponsiveImageSource;
+  desktop: ResponsiveImageSource;
   alt: string;
+  blurDataUrl?: string;
 };
 
 export type Project = {
