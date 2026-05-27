@@ -13,13 +13,13 @@ export default function Logo({ variant = "dark" }: LogoProps) {
   return (
     <Link
       href="/"
-      className="inline-flex h-8 w-19.25 shrink-0 items-center md:h-10 md:w-24.5"
+      className="inline-flex shrink-0 items-center"
       aria-label="Arch Studio home">
       <Image
         src={LogoImage}
         alt="Arch Studio Logo"
-        className={`h-auto w-full ${filter}`}
-        priority
+        className={`h-8 w-auto md:h-10 ${filter}`}
+        style={{ width: "auto" }}
       />
     </Link>
   );

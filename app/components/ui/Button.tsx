@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import ArrowIcon from "@/public/assets/icons/icon-arrow.svg";
 
-type ButtonVariant = "hero" | "about" | "featured" | "footer";
+type ButtonVariant = "hero" | "about" | "featured" | "footer" | "map";
 
 interface ButtonProps {
   children: React.ReactNode;
@@ -18,6 +18,7 @@ const variantStyles: Record<ButtonVariant, string> = {
   featured: "w-full sm:w-42.25",
   footer:
     "w-63 leading-6.25 md:absolute md:top-1/2 md:right-0 md:-translate-y-1/2 md:translate-x-1/2",
+  map: "bg-transparent hover:bg-transparent w-37.75 h-6.25 !text-arch-black",
 };
 
 const baseStyles =
@@ -42,7 +43,13 @@ export default function Button({
         width={variant === "footer" ? 26 : 24}
         height={variant === "footer" ? 20 : 18}
         aria-hidden="true"
-        className={variant === "footer" ? "h-5 w-6.5 invert" : "invert"}
+        className={
+          variant === "footer"
+            ? "h-5 w-6.5 invert"
+            : variant === "map"
+              ? ""
+              : "invert"
+        }
       />
     </Link>
   );

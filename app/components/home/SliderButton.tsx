@@ -3,17 +3,17 @@
 interface SliderButtonProps {
   index: number;
   title: string;
-  activeIndex: number;
-  setActiveIndex: React.Dispatch<React.SetStateAction<number>>;
+  currentIndex: number;
+  setCurrentIndex: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export default function SliderButton({
   index,
   title,
-  activeIndex,
-  setActiveIndex,
+  currentIndex,
+  setCurrentIndex,
 }: SliderButtonProps) {
-  const isActive = index === activeIndex;
+  const isActive = index === currentIndex;
 
   return (
     <button
@@ -25,8 +25,8 @@ export default function SliderButton({
           : "bg-arch-white text-arch-medium-grey hover:bg-arch-very-light-grey hover:text-arch-black"
       }`}
       aria-label={`Show ${title}`}
-      aria-pressed={index === activeIndex}
-      onClick={() => setActiveIndex(index)}>
+      aria-pressed={index === currentIndex}
+      onClick={() => setCurrentIndex(index)}>
       {index + 1}
     </button>
   );

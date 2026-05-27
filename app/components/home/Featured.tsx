@@ -1,62 +1,30 @@
-import project228Mobile from "@/public/assets/portfolio/mobile/image-228b.jpg";
-import project228Tablet from "@/public/assets/portfolio/tablet/image-228b.jpg";
-import project228Desktop from "@/public/assets/portfolio/desktop/image-228b.jpg";
-
-import projectDelSolMobile from "@/public/assets/portfolio/mobile/image-del-sol.jpg";
-import projectDelSolTablet from "@/public/assets/portfolio/tablet/image-del-sol.jpg";
-import projectDelSolDesktop from "@/public/assets/portfolio/desktop/image-del-sol.jpg";
-
-import projectPrototypeMobile from "@/public/assets/portfolio/mobile/image-prototype.jpg";
-import projectPrototypeTablet from "@/public/assets/portfolio/tablet/image-prototype.jpg";
-import projectPrototypeDesktop from "@/public/assets/portfolio/desktop/image-prototype.jpg";
-
 import ProjectCard from "../ui/ProjectCard";
 import { Project } from "@/types/types";
 import Button from "../ui/Button";
+import { FeaturedSection } from "@/types/home";
+import { transformSanityImage } from "@/lib/services/transformSanityImage";
 
-export const projects: Project[] = [
-  {
-    slug: "project-del-sol",
-    title: "Project Del Sol",
-    date: "January 2016",
-    images: {
-      mobile: projectDelSolMobile,
-      tablet: projectDelSolTablet,
-      desktop: projectDelSolDesktop,
-      alt: "Project Del Sol angular building exterior.",
-    },
-  },
-  {
-    slug: "le-prototype",
-    title: "Le Prototype",
-    date: "October 2015",
-    images: {
-      mobile: projectPrototypeMobile,
-      tablet: projectPrototypeTablet,
-      desktop: projectPrototypeDesktop,
-      alt: "Le Prototype architectural concept building.",
-    },
-  },
-  {
-    slug: "228b-tower",
-    title: "228B Tower",
-    date: "April 2015",
-    images: {
-      mobile: project228Mobile,
-      tablet: project228Tablet,
-      desktop: project228Desktop,
-      alt: "228B Tower facade at dusk.",
-    },
-  },
-];
+interface FeaturedProps {
+  featured: FeaturedSection | null;
+}
 
-export const featuredProjects = [
-  projects[0],
-  projects[1],
-  projects[2],
-] as const;
+function formatProjectDate(date: string) {
+  return new Intl.DateTimeFormat("en-US", {
+    month: "long",
+    year: "numeric",
+  }).format(new Date(`${date}T00:00:00`));
+}
 
-export default function Featured() {
+export default function Featured({ featured }: FeaturedProps) {
+  if (!featured?.projects.length) return null;
+
+  const featuredProjects: Project[] = featured.projects.map((project) => ({
+    slug: project.slug,
+    title: project.title,
+    date: formatProjectDate(project.date),
+    images: transformSanityImage(project.image),
+  }));
+
   return (
     <section
       className="site-container mt-18 md:mt-50 grid grid-cols-1 xl:grid-cols-[1fr_auto]"
