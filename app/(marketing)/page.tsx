@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 
-import Slider from "../components/home/Slider";
 import Welcome from "../components/home/Welcome";
 import SmallTeam from "../components/home/SmallTeam";
 import Featured from "../components/home/Featured";
+import { getHomePageData } from "@/lib/services/services";
+import Slider from "../components/home/Slider";
 
 export const metadata: Metadata = {
   title: "Home | Arch Studio",
@@ -16,13 +17,15 @@ export const metadata: Metadata = {
   },
 };
 
-export default function HomePage() {
+export default async function HomePage() {
+  const { heroSlides, welcome, smallTeam, featured } = await getHomePageData();
+
   return (
     <>
-      <Slider />
-      <Welcome />
-      <SmallTeam />
-      <Featured />
+      <Slider slides={heroSlides} />
+      <Welcome welcome={welcome} />
+      <SmallTeam smallTeam={smallTeam} />
+      <Featured featured={featured} />
     </>
   );
 }

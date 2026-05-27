@@ -28,7 +28,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={leagueSpartan.className}>
+    <html
+      lang="en"
+      className={leagueSpartan.className}
+      data-scroll-behavior="smooth">
       <body className="min-h-dvh antialiased">
         <div className="flex min-h-dvh flex-col">
           <a
