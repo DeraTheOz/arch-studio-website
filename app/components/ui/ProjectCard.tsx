@@ -1,23 +1,40 @@
 import Link from "next/link";
-import ResponsiveImage from "./ResponsiveImage";
+import type { MouseEventHandler } from "react";
+
 import { Project } from "@/types/types";
+import ResponsiveImage from "./ResponsiveImage";
 
 type ProjectCardProps = {
   project: Project;
   index?: number;
   featured?: boolean;
+  disabled?: boolean;
+  isLoading?: boolean;
+  onClick?: MouseEventHandler<HTMLAnchorElement>;
 };
 
 export default function ProjectCard({
   project,
   index,
   featured = false,
+  disabled = false,
+  isLoading = false,
+  onClick,
 }: ProjectCardProps) {
   return (
     <article>
       <Link
         href={featured ? "/portfolio" : `/portfolio/${project.slug}`}
-        className="group relative block h-60 overflow-hidden bg-arch-black text-arch-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-arch-black xl:h-140"
+        onClick={onClick}
+        aria-disabled={disabled || undefined}
+        aria-busy={isLoading || undefined}
+        tabIndex={disabled ? -1 : undefined}
+        className={[
+          "group relative block h-60 overflow-hidden bg-arch-black text-arch-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-arch-black xl:h-140",
+          disabled ? "pointer-events-none cursor-wait" : "",
+        ]
+          .filter(Boolean)
+          .join(" ")}
         aria-label={
           featured
             ? `View ${project.title} in the portfolio`
@@ -53,6 +70,10 @@ export default function ProjectCard({
             {featured ? "View All Projects" : project.date}
           </span>
         </span>
+
+        {isLoading ? (
+          <div className="absolute inset-0 z-20 grid place-items-center bg-black/35" />
+        ) : null}
       </Link>
     </article>
   );

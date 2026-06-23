@@ -17,7 +17,8 @@ export default function Logo({ variant = "dark" }: LogoProps) {
       aria-label="Arch Studio home">
       <Image
         src={LogoImage}
-        alt="Arch Studio Logo"
+        alt=""
+        loading="eager"
         className={`h-8 w-auto md:h-10 ${filter}`}
         style={{ width: "auto" }}
       />
