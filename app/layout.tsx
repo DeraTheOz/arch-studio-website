@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { League_Spartan } from "next/font/google";
+import { Toaster } from "sonner";
 
+import "leaflet/dist/leaflet.css";
 import "./globals.css";
 
 import Header from "./components/ui/Header";
@@ -48,6 +50,23 @@ export default function RootLayout({
 
           <Footer />
         </div>
+
+        <Toaster
+          position="top-right"
+          toastOptions={{
+            classNames: {
+              icon: "text-arch-white",
+              title: "text-base font-bold text-arch-white",
+            },
+            style: {
+              backgroundColor: "var(--color-arch-black)",
+              border: "1px solid var(--color-arch-light-grey)",
+              borderRadius: 0,
+              boxShadow: "var(--shadow-nav)",
+              color: "var(--color-arch-white)",
+            },
+          }}
+        />
       </body>
     </html>
   );
