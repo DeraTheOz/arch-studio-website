@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+
 import ArrowIcon from "@/public/assets/icons/icon-arrow.svg";
 
 type ButtonVariant = "hero" | "about" | "featured" | "footer" | "map";
@@ -22,7 +23,7 @@ const variantStyles: Record<ButtonVariant, string> = {
 };
 
 const baseStyles =
-  "inline-flex items-center justify-center gap-6 font-bold h-18 text-arch-white bg-arch-black transition-colors hover:bg-arch-dark-grey focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-arch-black";
+  "group relative inline-flex h-18 items-center justify-center gap-6 overflow-hidden font-bold text-arch-white bg-arch-black transition-[background-color,transform] duration-300 ease-out hover:bg-arch-dark-grey active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-arch-black";
 
 export default function Button({
   children,
@@ -36,20 +37,20 @@ export default function Button({
 
   return (
     <Link href={href} className={finalClassName} aria-label={ariaLabel}>
-      <span>{children}</span>
+      <span className="relative z-10">{children}</span>
       <Image
         src={ArrowIcon}
         alt=""
         width={variant === "footer" ? 26 : 24}
         height={variant === "footer" ? 20 : 18}
         aria-hidden="true"
-        className={
+        className={`relative z-10 transition-transform duration-300 ease-out group-hover:translate-x-1 ${
           variant === "footer"
             ? "h-5 w-6.5 invert"
             : variant === "map"
               ? ""
               : "invert"
-        }
+        }`}
       />
     </Link>
   );

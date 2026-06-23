@@ -1,5 +1,14 @@
 import type { Metadata } from "next";
 
+import {
+  formatPortfolioDate,
+  getPortfolioPageData,
+} from "@/lib/services/services";
+import { transformSanityImage } from "@/lib/services/transformSanityImage";
+import type { Project } from "@/types/types";
+
+import PortfolioGrid from "@/app/components/portfolio/PortfolioGrid";
+
 export const metadata: Metadata = {
   title: "Portfolio | Arch Studio",
   description:
@@ -11,6 +20,15 @@ export const metadata: Metadata = {
   },
 };
 
-export default function PortfolioPage() {
-  return <section>Portfolio page</section>;
+export default async function PortfolioPage() {
+  const { projects } = await getPortfolioPageData();
+
+  const portfolioProjects: Project[] = projects.map((project) => ({
+    slug: project.slug,
+    title: project.title,
+    date: formatPortfolioDate(project.date),
+    images: transformSanityImage(project.images),
+  }));
+
+  return <PortfolioGrid projects={portfolioProjects} />;
 }

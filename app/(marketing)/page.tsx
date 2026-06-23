@@ -3,8 +3,9 @@ import type { Metadata } from "next";
 import Welcome from "../components/home/Welcome";
 import SmallTeam from "../components/home/SmallTeam";
 import Featured from "../components/home/Featured";
-import { getHomePageData } from "@/lib/services/services";
 import Slider from "../components/home/Slider";
+import SectionReveal from "../components/ui/SectionReveal";
+import { getHomePageData } from "@/lib/services/services";
 
 export const metadata: Metadata = {
   title: "Home | Arch Studio",
@@ -23,9 +24,18 @@ export default async function HomePage() {
   return (
     <>
       <Slider slides={heroSlides} />
-      <Welcome welcome={welcome} />
-      <SmallTeam smallTeam={smallTeam} />
-      <Featured featured={featured} />
+
+      <SectionReveal delay={0.3}>
+        <Welcome welcome={welcome} />
+      </SectionReveal>
+
+      <SectionReveal delay={0.3}>
+        <SmallTeam smallTeam={smallTeam} />
+      </SectionReveal>
+
+      <SectionReveal delay={0.3}>
+        <Featured featured={featured} />
+      </SectionReveal>
     </>
   );
 }
