@@ -45,3 +45,6 @@ next-env.d.ts
 .dokugen-backup.md
 .dokugen-cache.json
 AGENTS.md
+
+.sanity
+dist
