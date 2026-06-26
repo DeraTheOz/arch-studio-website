@@ -38,17 +38,17 @@ export async function generateMetadata({
     };
   }
 
-  const date = formatPortfolioDate(project.date);
+  const description = project.description;
 
   return {
     title: `${project.title} | Arch Studio`,
-    description: `${project.title}, completed ${date}, from the Arch Studio portfolio.`,
+    description,
     alternates: {
       canonical: `/portfolio/${project.slug}`,
     },
     openGraph: {
       title: `${project.title} | Arch Studio`,
-      description: `${project.title}, completed ${date}, from the Arch Studio portfolio.`,
+      description,
     },
   };
 }
@@ -70,7 +70,7 @@ export default async function PortfolioProjectPage({
     <SectionReveal delay={0.3}>
       <article className="site-container">
         <div className="grid gap-12 xl:grid-cols-[1fr_21.875rem] xl:items-end">
-          <div className="relative h-140 overflow-hidden bg-arch-black">
+          <div className="relative h-80 md:h-140 overflow-hidden bg-arch-black">
             <ResponsiveImage
               image={image}
               priority
@@ -91,11 +91,7 @@ export default async function PortfolioProjectPage({
           </div>
 
           <div>
-            <p className="body-copy">
-              This project is part of Arch Studio&apos;s portfolio of landmark
-              architectural work, balancing ambitious forms with practical
-              spaces.
-            </p>
+            <p className="body-copy">{project.description}</p>
 
             <Button href="/portfolio" className="mt-8">
               Back to Portfolio

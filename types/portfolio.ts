@@ -5,6 +5,7 @@ export interface PortfolioProject {
   slug: string;
   title: string;
   date: string;
+  description: string;
   images: SanityResponsiveImage;
 }
 

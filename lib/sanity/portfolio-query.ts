@@ -5,6 +5,7 @@ const projectFields = groq`
   "slug": slug.current,
   title,
   date,
+  description,
   images{
     alt,
     mobile{ ..., asset->{ _id, metadata { lqip } } },
