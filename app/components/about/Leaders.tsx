@@ -31,14 +31,18 @@ export default function Leaders({ leaders }: LeadersProps) {
                   sizes="(min-width: 75rem) 350px, (min-width: 48rem) 280px, calc(100vw - 4rem)"
                   className="object-cover"
                 />
-                <div className="absolute inset-0 flex items-center justify-center gap-8 bg-arch-black/50 opacity-0 transition-opacity group-hover:opacity-100 group-focus-within:opacity-100">
+
+                {/* IMAGE OVERLAY */}
+                <div className="absolute bottom-0 right-0 flex items-center justify-center gap-4 bg-arch-black/70 px-4 py-3 opacity-100 transition-opacity xl:inset-0 xl:gap-8 xl:bg-arch-black/50 xl:px-0 xl:py-0 xl:opacity-0 xl:group-hover:opacity-100 xl:group-focus-within:opacity-100">
                   <SocialsLink
                     label={`${leader.name} on LinkedIn`}
                     type="linkedin"
+                    href="https://www.linkedin.com/in/emmanuel-ihemedu"
                   />
                   <SocialsLink
                     label={`${leader.name} on Twitter`}
                     type="twitter"
+                    href="https://x.com/deraamaobi"
                   />
                 </div>
               </div>

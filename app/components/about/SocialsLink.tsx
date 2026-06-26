@@ -16,6 +16,8 @@ export default function SocialsLink({
   return (
     <a
       href={href}
+      target="_blank"
+      rel="noopener noreferrer"
       className="grid size-10 place-items-center text-arch-white transition-colors hover:text-arch-light-grey focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-arch-white"
       aria-label={label}>
       <span
