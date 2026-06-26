@@ -92,6 +92,14 @@ export const portfolio = defineType({
             }),
 
             defineField({
+              name: "description",
+              title: "Description",
+              type: "text",
+              rows: 4,
+              validation: (Rule) => Rule.required().min(80),
+            }),
+
+            defineField({
               name: "images",
               title: "Images",
               type: "responsiveImage",
